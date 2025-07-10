@@ -50,6 +50,7 @@
   <ItemGroup>
     <Content Include="landing\templates\landing\index.html" />
     <Content Include="requirements.txt" />
+    <Content Include="static\css\landing.css" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DjangoWebProject2\" />
@@ -57,6 +58,8 @@
     <Folder Include="landing\migrations\" />
     <Folder Include="landing\templates\" />
     <Folder Include="landing\templates\landing\" />
+    <Folder Include="static\" />
+    <Folder Include="static\css\" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
