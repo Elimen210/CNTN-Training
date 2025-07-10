@@ -51,6 +51,8 @@
     <Content Include="landing\templates\landing\index.html" />
     <Content Include="requirements.txt" />
     <Content Include="static\css\landing.css" />
+    <Content Include="static\website_photos\Guetto Logo.png" />
+    <Content Include="static\website_photos\WhatsApp Image 2025-05-28 at 21.26.53_ec91dcb8.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DjangoWebProject2\" />
@@ -60,6 +62,7 @@
     <Folder Include="landing\templates\landing\" />
     <Folder Include="static\" />
     <Folder Include="static\css\" />
+    <Folder Include="static\website_photos\" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

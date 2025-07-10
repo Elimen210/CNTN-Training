@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    background-color: azure;
+    overflow-x: hidden;
+    z-index: 1;
+}
+
+
+.navbar {
+    margin: 0;
+    left: 0;
+    top: 0;
+    width: 20vw;
+    height: 100vh;
+    background: white;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
+.img {
+    margin-top: 5vh;
+    margin-left: 17.5%;
+    height: auto;
+    width: 10vw;
+    cursor: pointer;
+}
+
+.home {
+    margin-top: 15vh;
+    margin-left: 12.5%;
+    background: transparent;
+    font-family: Calibri;
+    text-decoration: none;
+    border: none;
+    padding: 0;
+    font-size: 20px;
+    border: 0;
+    cursor: pointer;
+}
+
+.text-home {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.settings {
+    margin-top: 5vh;
+    margin-left: 12.5%;
+    background: transparent;
+    font-family: Calibri;
+    text-decoration: none;
+    border: none;
+    padding: 0;
+    font-size: 20px;
+    border: 0;
+    cursor: pointer;
+}
+
+.content {
+    margin: 0;
+    top: 0;
+    width: 80vw;
+    margin-left: 20vw;
+    height: 100vh;
+    overflow-y: auto;
+    background: transparent;
+    justify-content: center;
+    border: 1px solid black;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-1 {
+    display: inline-block;
+    left: 50vh;
+    height: auto;
+    width: 300px;
+    margin: 0 30%;
+}

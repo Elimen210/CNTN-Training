@@ -6,8 +6,29 @@
     <meta charset="utf-8">
     <title>Guetto</title>
     <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <h1>Projet du groupe Guetto auprès du jury du CNTN</h1>
+    <nav class="navbar">
+        <header>
+            <img class="img" src="{% static 'website_photos/Guetto Logo.png'%}" />
+        </header>
+        <nav>
+            <button class="home"><span class="text-home"><i class='bx  bx-home'></i><span>Accueil</span></span></button>
+        </nav>
+        <nav>
+            <button class="settings"><span class="text-home"><i class='bxr  bx-contact-book'></i> <span>Pour Toi</span></span></button>
+        </nav>
+        <nav>
+            <button class="settings"><span class="text-home"><i class='bxr  bx-search'></i> <span>Rechercher</span></span></button>
+        </nav>
+        <nav>
+            <button class="settings"><span class="text-home"><i class='bxr  bx-user-circle'></i><span>Profil</span></span></button>
+        </nav>
+    </nav>
+    <nav class="content">
+        <img class="post-1" src="{% static 'website_photos/WhatsApp Image 2025-05-28 at 21.26.53_ec91dcb8.jpg'%}"/>
+    </nav>
 </body>
 </html>
