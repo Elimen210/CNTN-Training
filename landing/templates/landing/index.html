@@ -30,13 +30,13 @@
         </nav>
     </nav>
     
-    <nav class="content">
+    <div class="content">
         {% for post in post_list %}
         <div class="post-1">
             <p><strong>{{ post.author }}</strong> {{ post.created_on }}</p>
             <p>{{ post.body }}</p>
         </div>
         {% endfor %}
-    </nav>
+    </div>
 </body>
 </html>
