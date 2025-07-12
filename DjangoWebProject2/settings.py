@@ -32,6 +32,9 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # Add your apps here to enable them
     'landing',
+
+    'crispy_forms',
+    'allauth',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

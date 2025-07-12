@@ -1,6 +1,8 @@
 {% load static %}
+{% load crispy_forms_tags %}
 
-<!doc<!doctype html>
+<!doc
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -27,8 +29,14 @@
             <button class="settings"><span class="text-home"><i class='bxr  bx-user-circle'></i><span>Profil</span></span></button>
         </nav>
     </nav>
+    
     <nav class="content">
-        <img class="post-1" src="{% static 'website_photos/WhatsApp Image 2025-05-28 at 21.26.53_ec91dcb8.jpg'%}"/>
+        {% for post in post_list %}
+        <div class="post-1">
+            <p><strong>{{ post.author }}</strong> {{ post.created_on }}</p>
+            <p>{{ post.body }}</p>
+        </div>
+        {% endfor %}
     </nav>
 </body>
 </html>

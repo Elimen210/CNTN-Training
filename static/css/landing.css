@@ -75,9 +75,7 @@ body {
 }
 
 .post-1 {
-    display: inline-block;
-    left: 50vh;
-    height: auto;
-    width: 300px;
-    margin: 0 30%;
+    font-family: Calibri;
+    margin: 0 auto;
+    font-size: 20px;
 }
