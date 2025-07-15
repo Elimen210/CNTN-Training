@@ -1,0 +1,39 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!doc
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Guetto - Login/Signup</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <nav class="navbar">
+        <header>
+            <img class="img" src="{% static 'website_photos/Guetto Logo.png'%}" />
+        </header>
+        <a class="home" id="togg1" href="{% url 'signin' %}"><span class="text-home" ><i class='bx  bx-home'></i><span>Login</span></span></a>
+        <a class="settings" id="togg2" href="{% url 'signup' %}"><span class="text-home"><i class='bxr  bx-contact-book' ></i> <span>Signup</span></span></a>
+    </nav>
+
+    <div class="content">
+        <form method="POST" class="form" action="{% url 'signin' %}" id="login">
+            {% csrf_token %}
+            {{ login_form.as_p }}
+            <button type="submit" name="login">Se connecter</button>
+        </form>
+        <form method="POST" action="{% url 'signup' %}" class="form" id="signup">
+            {% csrf_token %}
+            {{ signup_form.as_p }}
+            <button type="submit" name="signup">S'inscrire</button>
+        </form>
+    </div>
+
+</body>
+</html>

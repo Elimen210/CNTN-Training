@@ -41,6 +41,19 @@
     <Compile Include="landing\tests.py" />
     <Compile Include="landing\views.py" />
     <Compile Include="landing\__init__.py" />
+    <Compile Include="login\admin.py" />
+    <Compile Include="login\apps.py" />
+    <Compile Include="login\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="login\migrations\__init__.py" />
+    <Compile Include="login\models.py" />
+    <Compile Include="login\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="login\tests.py" />
+    <Compile Include="login\views.py" />
+    <Compile Include="login\__init__.py" />
     <Compile Include="manage.py" />
     <Compile Include="DjangoWebProject2\__init__.py" />
     <Compile Include="DjangoWebProject2\settings.py" />
@@ -49,8 +62,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="landing\templates\landing\index.html" />
+    <Content Include="login\templates\login\index.html" />
     <Content Include="requirements.txt" />
     <Content Include="static\css\landing.css" />
+    <Content Include="static\css\login.css" />
+    <Content Include="static\js\login.js" />
     <Content Include="static\website_photos\Guetto Logo.png" />
     <Content Include="static\website_photos\WhatsApp Image 2025-05-28 at 21.26.53_ec91dcb8.jpg" />
   </ItemGroup>
@@ -60,8 +76,13 @@
     <Folder Include="landing\migrations\" />
     <Folder Include="landing\templates\" />
     <Folder Include="landing\templates\landing\" />
+    <Folder Include="login\" />
+    <Folder Include="login\migrations\" />
+    <Folder Include="login\templates\" />
+    <Folder Include="login\templates\login\" />
     <Folder Include="static\" />
     <Folder Include="static\css\" />
+    <Folder Include="static\js\" />
     <Folder Include="static\website_photos\" />
   </ItemGroup>
   <ItemGroup>
