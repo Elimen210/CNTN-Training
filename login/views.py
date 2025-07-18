@@ -2,7 +2,8 @@ from django.contrib.auth.forms import UsernameField
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import View
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, logout
+from django.contrib.auth import logout as django_logout
 from .forms import SignupForm, LoginForm
 
 class index(View):
@@ -24,7 +25,7 @@ def loginView(request):
             password=password,
                 )
 
-        if user:
+        if user is not None:
             auth_login(request, user)
             return redirect('landing')
 
@@ -52,3 +53,6 @@ def signupView(request):
         'signup_form': signup_form,
         })
 
+def logout_view(request):
+        logout(request)
+        return redirect('login-home')

@@ -56,6 +56,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+LOGIN_URL = 'login-home'
+
 ROOT_URLCONF = 'DjangoWebProject2.urls'
 
 # Template configuration

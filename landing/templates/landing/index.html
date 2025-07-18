@@ -1,6 +1,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+{% if user.is_authenticated %}
 <!doc
 <!doctype html>
 <html lang="en">
@@ -12,24 +13,21 @@
     <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+
     <nav class="navbar">
         <header>
             <img class="img" src="{% static 'website_photos/Guetto Logo.png'%}" />
         </header>
-        <nav>
-            <button class="home"><span class="text-home"><i class='bx  bx-home'></i><span>Accueil</span></span></button>
-        </nav>
-        <nav>
-            <button class="settings"><span class="text-home"><i class='bxr  bx-contact-book'></i> <span>Pour Toi</span></span></button>
-        </nav>
-        <nav>
-            <button class="settings"><span class="text-home"><i class='bxr  bx-search'></i> <span>Rechercher</span></span></button>
-        </nav>
-        <nav>
-            <button class="settings"><span class="text-home"><i class='bxr  bx-user-circle'></i><span>Profil</span></span></button>
-        </nav>
+        <button class="home"><span class="text-home"><i class='bx  bx-home'></i><span>Accueil</span></span></button>
+        <button class="settings"><span class="text-home"><i class='bxr  bx-contact-book'></i> <span>Pour Toi</span></span></button>
+        <button class="settings"><span class="text-home"><i class='bxr  bx-search'></i> <span>Rechercher</span></span></button>
+        <button class="settings"><span class="text-home"><i class='bxr  bx-user-circle'></i><span>Profil</span></span></button>
+        <form method="post" action="{% url 'logout' %}" class="logout">
+            {% csrf_token %}
+            <a type="submit" href="{% url 'logout' %}" class="logout-text"><span class="text-home"><i class='bx  bx-home'></i><span>Se déconnecter</span></span></a>
+        </form>
     </nav>
-    
+
     <div class="content">
         {% for post in post_list %}
         <div class="post-1">
@@ -40,3 +38,11 @@
     </div>
 </body>
 </html>
+
+{% else %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<div class="container">
+    <p class="text">Vous  connecté</p>
+    <a class="text" href="{% url 'landing' %}">Retournez sur la page d'accueil</a>
+</div>
+{% endif %}

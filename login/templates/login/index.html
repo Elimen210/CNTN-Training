@@ -1,6 +1,9 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+
+{% if not user.is_authenticated  %}
+
 <!doc
 <!doctype html>
 <html lang="en">
@@ -18,8 +21,8 @@
         <header>
             <img class="img" src="{% static 'website_photos/Guetto Logo.png'%}" />
         </header>
-        <a class="home" id="togg1" href="{% url 'signin' %}"><span class="text-home" ><i class='bx  bx-home'></i><span>Login</span></span></a>
-        <a class="settings" id="togg2" href="{% url 'signup' %}"><span class="text-home"><i class='bxr  bx-contact-book' ></i> <span>Signup</span></span></a>
+        <a class="home" id="togg1" href="{% url 'signin' %}"><span class="text-home"><i class='bx  bx-home'></i><span>Login</span></span></a>
+        <a class="settings" id="togg2" href="{% url 'signup' %}"><span class="text-home"><i class='bxr  bx-contact-book'></i> <span>Signup</span></span></a>
     </nav>
 
     <div class="content">
@@ -37,3 +40,11 @@
 
 </body>
 </html>
+
+{% else %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<div class="container">
+    <p class="text">Vous n'êtes pas connecté</p>
+    <a class="text" href="{% url 'login-home' %}">Se connecter</a>
+</div>
+{% endif %}

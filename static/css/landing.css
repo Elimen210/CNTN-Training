@@ -83,3 +83,22 @@ body {
     font-size: 20px;
     width: 60%;
 }
+
+.logout {
+    margin-top: 15vh;
+    margin-left: 12.5%;
+    background: transparent;
+    font-family: Calibri;
+    
+    color: black;
+    border: none;
+    padding: 0;
+    font-size: 16px;
+    border: 0;
+    cursor: pointer;
+}
+
+.logout-text {
+    text-decoration: none;
+    color: black;
+}

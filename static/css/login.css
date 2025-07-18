@@ -101,3 +101,17 @@ body {
 .content-none {
     display: none;
 }
+
+.container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    font-family: Calibri;
+}
+
+.text {
+    text-decoration: none;
+    font-family: Calibri;
+    font-size: 20px;
+}
