@@ -34,8 +34,8 @@ body {
     background: transparent;
     font-family: Calibri;
     text-decoration: none;
+    color: black;
     border: none;
-    padding: 0;
     font-size: 20px;
     border: 0;
     cursor: pointer;
@@ -47,12 +47,27 @@ body {
     gap: 15px;
 }
 
-.settings {
+.option {
     margin-top: 5vh;
     margin-left: 12.5%;
     background: transparent;
     font-family: Calibri;
     text-decoration: none;
+    color: black;
+    border: none;
+    padding: 0;
+    font-size: 20px;
+    border: 0;
+    cursor: pointer;
+}
+
+.settings {
+    margin-top: 10vh;
+    margin-left: 12.5%;
+    background: transparent;
+    font-family: Calibri;
+    text-decoration: none;
+    color: black;
     border: none;
     padding: 0;
     font-size: 20px;
@@ -85,15 +100,14 @@ body {
 }
 
 .logout {
-    margin-top: 15vh;
+    margin-top: 11vh;
     margin-left: 12.5%;
     background: transparent;
     font-family: Calibri;
-    
     color: black;
     border: none;
     padding: 0;
-    font-size: 16px;
+    font-size: 18px;
     border: 0;
     cursor: pointer;
 }
@@ -101,4 +115,34 @@ body {
 .logout-text {
     text-decoration: none;
     color: black;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    font-family: Calibri;
+}
+
+.text {
+    text-decoration: none;
+    font-family: Calibri;
+    font-size: 20px;
+}
+
+.userimage {
+    display: flex;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.username {
+    font-family: Calibri;
+    font-size: 30px;
+    text-align: center;
+    margin: 0 auto;
+    border-bottom: 2px solid black;
+    padding-bottom: 30px;
+    width: 70vw;
 }

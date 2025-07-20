@@ -33,6 +33,9 @@
   <ItemGroup>
     <Compile Include="landing\admin.py" />
     <Compile Include="landing\apps.py" />
+    <Compile Include="landing\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="landing\migrations\__init__.py" />
     <Compile Include="landing\models.py" />
     <Compile Include="landing\urls.py">
@@ -62,7 +65,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="landing\templates\landing\index.html" />
+    <Content Include="landing\templates\landing\settings.html" />
+    <Content Include="landing\templates\landing\profile.html" />
     <Content Include="login\templates\login\index.html" />
+    <Content Include="media\uploads\userprofile\default.jpeg" />
     <Content Include="requirements.txt" />
     <Content Include="static\css\landing.css" />
     <Content Include="static\css\login.css" />
@@ -80,10 +86,13 @@
     <Folder Include="login\migrations\" />
     <Folder Include="login\templates\" />
     <Folder Include="login\templates\login\" />
+    <Folder Include="media\" />
     <Folder Include="static\" />
     <Folder Include="static\css\" />
     <Folder Include="static\js\" />
     <Folder Include="static\website_photos\" />
+    <Folder Include="media\uploads\" />
+    <Folder Include="media\uploads\userprofile\" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

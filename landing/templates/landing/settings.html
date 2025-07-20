@@ -2,11 +2,12 @@
 {% load crispy_forms_tags %}
 
 {% if user.is_authenticated %}
-<!doc<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
-    <title>Guetto</title>
+    <meta charset="utf-8" />
+    <title>Profile</title>
     <link rel="stylesheet" href="{% static 'css/landing.css' %}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
@@ -28,12 +29,11 @@
     </nav>
 
     <div class="content">
-        {% for post in post_list %}
-        <div class="post-1">
-            <p><strong>{{ post.author }}</strong> {{ post.created_on }}</p>
-            <p>{{ post.body }}</p>
-        </div>
-        {% endfor %}
+        <form method="post" class="post-1">
+            <label>Choisir une photo de profile</label>
+            <input type="image">
+
+        </form>
     </div>
 </body>
 </html>

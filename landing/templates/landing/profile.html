@@ -2,11 +2,12 @@
 {% load crispy_forms_tags %}
 
 {% if user.is_authenticated %}
-<!doc<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
-    <title>Guetto</title>
+    <meta charset="utf-8" />
+    <title>Profile</title>
     <link rel="stylesheet" href="{% static 'css/landing.css' %}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
@@ -28,7 +29,15 @@
     </nav>
 
     <div class="content">
-        {% for post in post_list %}
+        <div>
+            <img class="userimage" src="{{ profile.user_picture.url }}" width="100" height="100">
+            <br />
+            <h3 class="username">{{ profile.name }}</h3>
+            {% if profile.bio %}
+            <h3>{{ profile.bio }}</h3>
+            {% endif %}
+        </div>
+        {% for post in posts %}
         <div class="post-1">
             <p><strong>{{ post.author }}</strong> {{ post.created_on }}</p>
             <p>{{ post.body }}</p>
