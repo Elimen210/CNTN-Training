@@ -7,13 +7,16 @@ from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
+from .forms import PostForm
 
 class index(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         posts = Post.objects.all().order_by('-created_on')
+        form = PostForm()
 
         context = {
                 'post_list': posts,
+                'form': form,
             }
 
         return render(request, 'landing/index.html', context)
@@ -21,11 +24,21 @@ class index(LoginRequiredMixin, View):
         if not request.user.is_authenticated:
             return redirect(f"{settings.LOGIN_URL}?next={request.path}")
 
-class profile(LoginRequiredMixin, View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'landing/profile.html')
-        if not request.user.is_authenticated:
-                return redirect(f"{settings.LOGIN_URL}?next={request.path}")
+    def post(self, request, *args, **kwargs):
+        posts = Post.objects.all().order_by('created_on')
+        form = PostForm(request.POST)
+
+        if form.is_valid():
+            new_post = form.save(commit=False)
+            new_post.author = request.user
+            new_post.save()
+
+            context = {
+                'post_list': posts,
+                'form': form,
+            }
+
+        return render(request, 'landing/index.html', context)
 
 class settings(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
@@ -38,13 +51,32 @@ class ProfileView(View):
         profile = UserProfile.objects.get(pk=pk)
         user = profile.user
         posts = Post.objects.filter(author=user).order_by('created_on')
+        form = PostForm()
 
         context = {
             'profile': profile,
             'user': user,
             'posts': posts,
+            'form': form,
         }
 
         return render(request, 'landing/profile.html', context)
+        return render(request, 'landing/profile.html')
+        if not request.user.is_authenticated:
+                return redirect(f"{settings.LOGIN_URL}?next={request.path}")
 
-    
+    def post(self, request, *args, **kwargs):
+        posts = Post.objects.all().order_by('created_on')
+        form = PostForm(request.POST)
+
+        if form.is_valid():
+            new_post = form.save(commit=False)
+            new_post.author = request.user
+            new_post.save()
+
+            context = {
+                'posts': posts,
+                'form': form,
+            }
+
+        return render(request, 'landing/index.html', context)

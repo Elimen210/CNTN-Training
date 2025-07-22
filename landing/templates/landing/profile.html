@@ -32,10 +32,21 @@
         <div>
             <img class="userimage" src="{{ profile.user_picture.url }}" width="100" height="100">
             <br />
+            {% if profile.name and not profile.bio %}
             <h3 class="username">{{ profile.name }}</h3>
-            {% if profile.bio %}
-            <h3>{{ profile.bio }}</h3>
             {% endif %}
+            {% if profile.bio %}
+            <h3 style="font-family: Calibri; font-size: 30px; text-align: center; margin: 0 auto; padding-bottom: 30px; width: 70vw;">{{ profile.name }}</h3>
+            <h3 style=" font-family: Calibri; font-size: 15px; text-align: center; margin: 0 auto; border-bottom: 2px solid black; padding-bottom: 30px; width: 70vw; ">{{ profile.bio }}</h3>
+            {% endif %}
+        </div>
+        <div>
+            <form method="POST" class="post-form">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <br />
+                <button type="submit">Envoyer</button>
+            </form>
         </div>
         {% for post in posts %}
         <div class="post-1">
