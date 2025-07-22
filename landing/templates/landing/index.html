@@ -23,7 +23,7 @@
         <a href="{% url 'settings' %}" class="settings"><span class="text-home"><i class='bxr  bx-user-circle'></i><span>Settings</span></span></a>
         <form method="post" action="{% url 'logout' %}" class="logout">
             {% csrf_token %}
-            <a type="submit" href="{% url 'logout' %}" class="logout-text"><span class="text-home"><i class='bx  bx-home'></i><span>Se déconnecter</span></span></a>
+            <button type="submit" href="{% url 'logout' %}" class="logout-text"><span class="text-home"><i class='bx  bx-home'></i><span>Se déconnecter</span></span></button>
         </form>
     </nav>
 

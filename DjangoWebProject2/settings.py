@@ -56,7 +56,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-LOGIN_URL = 'login-home'
+LOGIN_URL = 'signin'
 
 ROOT_URLCONF = 'DjangoWebProject2.urls'
 
