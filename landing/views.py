@@ -49,19 +49,18 @@ class settings(LoginRequiredMixin, View):
 class ProfileView(View):
     def get(self, request, pk, *args, **kwargs):
         profile = UserProfile.objects.get(pk=pk)
-        user = profile.user
-        posts = Post.objects.filter(author=user).order_by('created_on')
+        profile_user = profile.user
+        posts = Post.objects.filter(author=profile_user).order_by('created_on')
         form = PostForm()
 
         context = {
             'profile': profile,
-            'user': user,
+            'profile_user': profile_user,
             'posts': posts,
             'form': form,
         }
 
         return render(request, 'landing/profile.html', context)
-        return render(request, 'landing/profile.html')
         if not request.user.is_authenticated:
                 return redirect(f"{settings.LOGIN_URL}?next={request.path}")
 
@@ -80,3 +79,5 @@ class ProfileView(View):
             }
 
         return render(request, 'landing/index.html', context)
+        if not request.user.is_authenticated:
+                return redirect(f"{settings.LOGIN_URL}?next={request.path}")

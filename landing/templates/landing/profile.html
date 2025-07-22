@@ -40,6 +40,7 @@
             <h3 style=" font-family: Calibri; font-size: 15px; text-align: center; margin: 0 auto; border-bottom: 2px solid black; padding-bottom: 30px; width: 70vw; ">{{ profile.bio }}</h3>
             {% endif %}
         </div>
+        {% if user.id == profile_user.id %}
         <div>
             <form method="POST" class="post-form">
                 {% csrf_token %}
@@ -48,6 +49,7 @@
                 <button type="submit">Envoyer</button>
             </form>
         </div>
+        {% endif %}
         {% for post in posts %}
         <div class="post-1">
             <p><strong>{{ post.author }}</strong> {{ post.created_on }}</p>

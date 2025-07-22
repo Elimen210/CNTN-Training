@@ -155,5 +155,16 @@ body {
     font-family: Calibri;
     margin: 0 auto;
     width: 70%;
-    margin-top: 20px;
+    margin-top: 50px;
+}
+
+.welcome-text {
+    font-family: Arial;
+    font-size: 35px;
+    text-align: center;
+    margin-top: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid black;
+    width: 65vw;
+    margin: 0 auto;
 }

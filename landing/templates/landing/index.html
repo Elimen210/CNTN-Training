@@ -28,15 +28,19 @@
     </nav>
     <div class="content">
         <div>
+            <h1 class="welcome-text">WELCOME TO GUETTO SOCIAL APP</h1>
+        </div>
+        <div>
             <form method="POST" class="post-form">
                 {% csrf_token %}
                 {{ form | crispy }}
+                <br />
                 <button type="submit">Envoyer</button>
             </form>
         </div>
         {% for post in post_list %}
         <div class="post-1">
-            <p><strong>{{ post.author }}</strong> {{ post.created_on }}</p>
+            <a  style="text-decoration: none;"><a href="{% url 'profile' post.author.pk %}" style="color:dodgerblue;"><strong>@{{ post.author }}</strong></a> {{ post.created_on }}</a>
             <p>{{ post.body }}</p>
         </div>
         {% endfor %}
