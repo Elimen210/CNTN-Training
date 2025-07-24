@@ -35,12 +35,15 @@
                 {% csrf_token %}
                 {{ form | crispy }}
                 <br />
-                <button type="submit">Envoyer</button>
+                <button type="submit" class="submit">Envoyer</button>
             </form>
         </div>
         {% for post in post_list %}
-        <div class="post-1">
-            <a  style="text-decoration: none;"><a href="{% url 'profile' post.author.pk %}" style="color:dodgerblue;"><strong>@{{ post.author }}</strong></a> {{ post.created_on }}</a>
+        <div class="post-1" >
+            <div style="display: flex;align-items: center; flex-direction: row;gap:1vw;">
+                <img class="userimage-home" src="{{ post.author.profile.user_picture.url }}" width="10" height="10">
+                <p style="text-decoration: none;"><a href="{% url 'profile' post.author.pk %}" style="color:dodgerblue;"><strong>@{{ post.author }}</strong></a> {{ post.created_on }}</p>
+            </div>
             <p>{{ post.body }}</p>
         </div>
         {% endfor %}
