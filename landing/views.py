@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import View
+from django.urls import reverse_lazy
 from .models import Post
+from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 from django.shortcuts import render, redirect
@@ -49,19 +51,32 @@ class settings(LoginRequiredMixin, View):
 class ProfileView(View):
     def get(self, request, pk, *args, **kwargs):
         profile = UserProfile.objects.get(pk=pk)
-        user = profile.user
-        posts = Post.objects.filter(author=user).order_by('created_on')
+        profile_user = profile.user
+        posts = Post.objects.filter(author=profile_user).order_by('created_on')
+        current_user_profile = request.user.profile
         form = PostForm()
+
+        followers = profile.followers.all()
+
+        number_of_followers = profile.number_of_followers
+        number_of_following = profile.number_of_following
+
+        if len(followers) == 0:
+            is_following = False
+
+        is_following = request.user in followers.all()
 
         context = {
             'profile': profile,
-            'user': user,
+            'profile_user': profile_user,
             'posts': posts,
             'form': form,
+            'number_of_followers': number_of_followers,
+            'number_of_following': number_of_following,
+            'is_following': is_following,
         }
 
         return render(request, 'landing/profile.html', context)
-        return render(request, 'landing/profile.html')
         if not request.user.is_authenticated:
                 return redirect(f"{settings.LOGIN_URL}?next={request.path}")
 
@@ -80,3 +95,38 @@ class ProfileView(View):
             }
 
         return render(request, 'landing/index.html', context)
+        if not request.user.is_authenticated:
+                return redirect(f"{settings.LOGIN_URL}?next={request.path}")
+
+def UserSearch(request):
+    query = request.GET.get('query')
+    profile_list = UserProfile.objects.filter(
+        Q(user__username__icontains=query)
+    )
+
+    context = {
+            'profile_list': profile_list,
+        }
+
+    return render(request, 'landing/search.html', context)
+
+class AddFollower(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        profile = UserProfile.objects.get(pk=pk)
+        profile.followers.add(request.user)
+
+        current_user_profile = request.user.profile
+        current_user_profile.following.add(profile.user)
+
+        return redirect('profile', pk=profile.pk)
+
+
+class RemoveFollower(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        profile = UserProfile.objects.get(pk=pk)
+        profile.followers.remove(request.user)
+
+        current_user_profile = request.user.profile
+        current_user_profile.following.remove(profile.user)
+
+        return redirect('profile', pk=profile.pk)
