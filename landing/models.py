@@ -14,3 +14,11 @@ class UserProfile(models.Model):
     bio = models.CharField(max_length=200, blank=True, null=True)
     followers = models.ManyToManyField(User, related_name='followers', blank=True)
     following = models.ManyToManyField(User, related_name='following', blank=True)
+
+    @property
+    def number_of_followers(self):
+        return self.followers.count()
+
+    @property
+    def number_of_following(self):
+        return UserProfile.objects.filter(followers=self.user).count()

@@ -22,3 +22,8 @@ function RevealingTime(type) {
         signup.classList.remove('content-none')
     }
 }
+
+function SearchToggle(type) {
+    const row = document.getElementById(search)
+    row.classList.toggle("d-none");
+}
