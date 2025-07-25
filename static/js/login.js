@@ -24,6 +24,7 @@ function RevealingTime(type) {
 }
 
 function SearchToggle(type) {
-    const row = document.getElementById(search)
+    const row = document.getElementById("search")
     row.classList.toggle("d-none");
+    console.log("Toggle:", id);
 }

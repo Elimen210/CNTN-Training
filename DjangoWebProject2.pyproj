@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="landing\templates\landing\index.html" />
+    <Content Include="landing\templates\landing\search.html" />
     <Content Include="landing\templates\landing\settings.html" />
     <Content Include="landing\templates\landing\profile.html" />
     <Content Include="login\templates\login\index.html" />

@@ -196,11 +196,31 @@ body {
 }
 
 .search-bar {
-    margin: 20px 0;
+    position: fixed;
+    left: 20vw;
+    width: 30vw;
+    top:0;
+    height: 100%;
     padding: 10px;
-    background-color: #f1f1f1;
-    border-radius: 10px;
-    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid black;
+    z-index: 10;
+}
+
+.search-button {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.result {
+    text-decoration: none;
+    text-align: center;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
 }
 
 .d-none {

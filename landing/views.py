@@ -66,7 +66,6 @@ class ProfileView(View):
 
         is_following = request.user in followers.all()
 
-
         context = {
             'profile': profile,
             'profile_user': profile_user,
@@ -99,16 +98,17 @@ class ProfileView(View):
         if not request.user.is_authenticated:
                 return redirect(f"{settings.LOGIN_URL}?next={request.path}")
 
-class UserSearch(View):
-    def get(self, request, *args, **kwargs):
-        query = request.GET.get('query')
-        profile_list = []
+def UserSearch(request):
+    query = request.GET.get('query')
+    profile_list = UserProfile.objects.filter(
+        Q(user__username__icontains=query)
+    )
 
-        context = {
+    context = {
             'profile_list': profile_list,
         }
 
-        return render(request, 'social/index.html', context)
+    return render(request, 'landing/search.html', context)
 
 class AddFollower(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
