@@ -1,8 +1,9 @@
-from django.shortcuts import render
+﻿from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import View
 from django.urls import reverse_lazy
 from .models import Post
+from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
@@ -45,8 +46,6 @@ class index(LoginRequiredMixin, View):
 class settings(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         return render(request, 'landing/settings.html')
-        if not request.user.is_authenticated:
-                return redirect(f"{settings.LOGIN_URL}?next={request.path}")
 
 class ProfileView(View):
     def get(self, request, pk, *args, **kwargs):
@@ -61,10 +60,8 @@ class ProfileView(View):
         number_of_followers = profile.number_of_followers
         number_of_following = profile.number_of_following
 
-        if len(followers) == 0:
-            is_following = False
-
         is_following = request.user in followers.all()
+
 
         context = {
             'profile': profile,
@@ -77,8 +74,6 @@ class ProfileView(View):
         }
 
         return render(request, 'landing/profile.html', context)
-        if not request.user.is_authenticated:
-                return redirect(f"{settings.LOGIN_URL}?next={request.path}")
 
     def post(self, request, *args, **kwargs):
         posts = Post.objects.all().order_by('created_on')
@@ -95,8 +90,6 @@ class ProfileView(View):
             }
 
         return render(request, 'landing/index.html', context)
-        if not request.user.is_authenticated:
-                return redirect(f"{settings.LOGIN_URL}?next={request.path}")
 
 def UserSearch(request):
     query = request.GET.get('query')
@@ -130,3 +123,20 @@ class RemoveFollower(LoginRequiredMixin, View):
         current_user_profile.following.remove(profile.user)
 
         return redirect('profile', pk=profile.pk)
+
+class AddLike(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        post = Post.objects.get(pk=pk)
+
+        is_like = False
+
+        is_like = request.user in post.likes.all()
+
+        if not is_like:
+            post.likes.add(request.user)
+
+        if is_like:
+            post.likes.remove(request.user)
+
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)

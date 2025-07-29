@@ -19,7 +19,7 @@
         </header>
         <a class="home" href="{% url 'landing' %}"><span class="text-home"><i class='bx  bx-home'></i><span>Accueil</span></span></a>
         <a class="option" href="#"><span class="text-home"><i class='bxr  bx-contact-book'></i> <span>Pour Toi</span></span></a>
-        <a class="option" href="#"><span class="text-home"><i class='bxr  bx-search'></i> <span>Rechercher</span></span></a>
+        <button class="option" onclick="SearchToggle('search')"><span class="text-home"><i class='bxr  bx-search'></i> <span>Rechercher</span></span></button>
         <a href="{% url 'profile' user.profile.pk %}" class="option"><span class="text-home"><i class='bxr  bx-user-circle'></i><span>Profil</span></span></a>
         <a href="{% url 'settings' %}" class="settings"><span class="text-home"><i class='bxr  bx-user-circle'></i><span>Settings</span></span></a>
         <form method="post" action="{% url 'logout' %}" class="logout">
@@ -29,6 +29,18 @@
     </nav>
 
     <div class="content">
+        <div class="search-bar d-none" id="search">
+            <form method="GET" class="search-button" action="{% url 'search' %}">
+                <input type="search" name="query" placeholder="Rechercher un utilisateur..." />
+                <button type="submit"><i class='bx bx-search'></i></button>
+            </form>
+            {% if profile_list %}
+            {% for profile in profile_list %}
+            <p class="result"><a href="{% url 'profile' profile.pk %}" style="color:dodgerblue; font-family:Calibri; font-size:16px;"><strong>@{{ profile.user }}</strong></a></p>
+
+            {% endfor %}
+            {% endif %}
+        </div>
         <form method="post" class="post-1">
             <label>Choisir une photo de profile</label>
             <input type="image">
