@@ -7,6 +7,9 @@ class Post(models.Model):
     created_on = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, related_name='likes', blank=True)
+    image = models.ImageField(upload_to='uploads/post_images', blank=True, null=True)
+    video = models.FileField(upload_to='uploads/post_videos', blank=True, null=True)
+
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, primary_key=True, verbose_name='user', related_name='profile', on_delete=models.CASCADE)

@@ -363,3 +363,6 @@ MigrationBackup/
 FodyWeavers.xsd
 /env
 /env
+/media/uploads/post_videos
+/landing/migrations
+/media/uploads/post_images
