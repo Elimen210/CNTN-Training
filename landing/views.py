@@ -74,7 +74,7 @@ class ProfileView(View):
 
         return render(request, 'landing/profile.html', context)
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, pk, *args, **kwargs):
         posts = Post.objects.all().order_by('-created_on')
         form = PostForm(request.POST)
 
@@ -89,6 +89,33 @@ class ProfileView(View):
             }
 
         return render(request, 'landing/index.html', context)
+
+class FollowingPage(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        current_user_profile = request.user.profile
+        following_users = current_user_profile.following.all()  
+
+        posts = Post.objects.filter(author__in=following_users).order_by('-created_on')
+        form = PostForm()
+
+        context = {
+                'post_list': posts,
+                'form': form,
+            }
+
+        return render(request, 'landing/following.html', context)
+
+    def post(self, request, *args, **kwargs):
+        posts = Post.objects.all().order_by('-created_on')
+        form = PostForm(request.POST)
+        
+        context = {
+                'post_list': posts,
+                'form': form,
+            }
+
+        return render(request, 'landing/following.html', context)
+
 
 def UserSearch(request):
     query = request.GET.get('query')
@@ -139,3 +166,4 @@ class AddLike(LoginRequiredMixin, View):
 
         next = request.POST.get('next', '/')
         return HttpResponseRedirect(next)
+

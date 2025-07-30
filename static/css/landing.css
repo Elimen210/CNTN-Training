@@ -263,3 +263,29 @@ body {
     width: 50vw;
     height: auto;
 }
+
+.follower_block {
+    margin: 0;
+    width: 50vw;
+    height: 50vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: transparent;
+    border: 1px solid black;
+    padding-top: 75px;
+}
+
+.following_block {
+    margin: 0;
+    width: 50vw;
+    height: 50vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: transparent;
+    border: 1px solid black;
+    padding-top: 75px;
+}

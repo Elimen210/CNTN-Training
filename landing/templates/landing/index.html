@@ -18,7 +18,7 @@
             <img class="img" src="{% static 'website_photos/Guetto Logo.png'%}" />
         </header>
         <a class="home" href="{% url 'landing' %}"><span class="text-home"><i class='bx  bx-home'></i><span>Accueil</span></span></a>
-        <a class="option" href="#"><span class="text-home"><i class='bxr  bx-contact-book'></i> <span>Pour Toi</span></span></a>
+        <a class="option" href="{% url 'foryoupage' %}"><span class="text-home"><i class='bxr  bx-contact-book'></i> <span>Pour Toi</span></span></a>
         <button class="option" onclick="SearchToggle('search')"><span class="text-home"><i class='bxr  bx-search'></i> <span>Rechercher</span></span></button>
         <a href="{% url 'profile' user.profile.pk %}" class="option"><span class="text-home"><i class='bxr  bx-user-circle'></i><span>Profil</span></span></a>
         <a href="{% url 'settings' %}" class="settings"><span class="text-home"><i class='bxr  bx-user-circle'></i><span>Settings</span></span></a>

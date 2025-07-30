@@ -26,5 +26,24 @@ function RevealingTime(type) {
 function SearchToggle(type) {
     const row = document.getElementById("search")
     row.classList.toggle("d-none");
-    console.log("Toggle:", id);
+}
+function UserToggle(type) {
+    const signup = document.getElementById("following")
+    const login = document.getElementById("follower")
+
+    if (type == 'following') {
+        if (!follower.classList.contains('content-none')) {
+            follower.classList.add('content-none')
+        }
+
+        following.classList.remove('content-none')
+    }
+
+    if (type == 'follower') {
+        if (!following.classList.contains('content-none')) {
+            follower.classList.add('content-none')
+        }
+
+        follower.classList.remove('content-none')
+    }
 }

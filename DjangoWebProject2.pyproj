@@ -88,6 +88,8 @@
     <Folder Include="login\templates\" />
     <Folder Include="login\templates\login\" />
     <Folder Include="media\" />
+    <Folder Include="media\uploads\post_videos\" />
+    <Folder Include="media\uploads\post_images\" />
     <Folder Include="static\" />
     <Folder Include="static\css\" />
     <Folder Include="static\js\" />
