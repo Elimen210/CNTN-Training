@@ -25,7 +25,7 @@ SECRET_KEY = '7c892a50-f9a5-47b4-a086-bdd2e4723471'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cntn-training.onrender.com', 'localhost', '127.0.0.1']
 
 # Application references
 # https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-INSTALLED_APPS
