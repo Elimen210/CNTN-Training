@@ -64,6 +64,7 @@
     <Compile Include="DjangoWebProject2\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="landing\templates\landing\following.html" />
     <Content Include="landing\templates\landing\index.html" />
     <Content Include="landing\templates\landing\search.html" />
     <Content Include="landing\templates\landing\settings.html" />

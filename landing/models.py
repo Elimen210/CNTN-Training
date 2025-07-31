@@ -26,3 +26,10 @@ class UserProfile(models.Model):
     @property
     def number_of_following(self):
         return UserProfile.objects.filter(followers=self.user).count()
+
+class Comment(models.Model):
+    comment = models.TextField()
+    created_on = models.DateTimeField(default=timezone.now)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name="comments")
+    likes = models.ManyToManyField(User, related_name='+', blank=True)

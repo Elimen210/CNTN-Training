@@ -60,21 +60,26 @@
             {% if post.image %}
             <img src="{{ post.image.url }}" class="post-image" alt="Post Image">
             {% endif %}
-            {% if post.video %}
-            <video controls autoplay class="post-video">
+            {% if post.is_video %}
+            <video controls autoplay muted class="post-video">
                 <source src="{{ post.video.url }}" type="video/mp4">
             </video>
+            {% elif post.is_audio %}
+            <audio controls class="post-audio">
+                <source src="{{ post.video.url }}" type="audio/mp3">
+            </audio>
             {% endif %}
             <p>{{ post.body }}</p>
-            <form method="POST" action="{% url 'like' post.pk %}">
-                {% csrf_token %}
-                <button type="submit"><i class='bxr  bx-like'></i><span> {{ post.likes.all.count }}</span></button>
-            </form>
+            <div style="display: flex; flex-direction: row; gap: 8px;">
+                <form method="POST" action="{% url 'like' post.pk %}">
+                    {% csrf_token %}
+                    <button type="submit"><i class='bxr  bx-like'></i><span> {{ post.likes.all.count }}</span></button>
+                </form>
+                <a type="submit" href="{% url 'comment' post.pk %}"><i class='bxr  bx-message'></i> </a>
+            </div>
         </div>
         {% endfor %}
     </div>
-
-
 </body>
 </html>
 

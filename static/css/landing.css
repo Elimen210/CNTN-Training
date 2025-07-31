@@ -264,8 +264,13 @@ body {
     height: auto;
 }
 
+.post-audio {
+    margin: 0 auto;
+    width: 50vw;
+}
+
 .follower_block {
-    margin: 0;
+    margin: 0 auto;
     width: 50vw;
     height: 50vh;
     overflow-y: auto;
@@ -275,10 +280,12 @@ body {
     background: transparent;
     border: 1px solid black;
     padding-top: 75px;
+    font-family: Calibri;
+    z-index:4;
 }
 
 .following_block {
-    margin: 0;
+    margin: 0 auto;
     width: 50vw;
     height: 50vh;
     overflow-y: auto;
@@ -288,4 +295,6 @@ body {
     background: transparent;
     border: 1px solid black;
     padding-top: 75px;
+    font-family: Calibri;
+    z-index: 3;
 }
