@@ -52,3 +52,7 @@ typing_extensions==4.13.1
 tzdata==2025.2
 urllib3==1.26.20
 yarl==1.18.3
+gunicorn
+whitenoise
+dj-database-url
+python-dotenv
