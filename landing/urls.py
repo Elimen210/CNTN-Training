@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import index, ProfileView, settings, ProfileView, UserSearch, AddFollower, RemoveFollower, AddLike, FollowingPage, CommentPage
+from .views import index, ProfileView, settings, ProfileView, UserSearch, AddFollower, RemoveFollower, AddLike, FollowingPage, CommentPage, AddCommentLike
 
 urlpatterns = [
     path('', index.as_view(), name='landing'),
@@ -12,4 +12,5 @@ urlpatterns = [
     path('like/<int:pk>/', AddLike.as_view(), name='like'),
     path('foryou/', FollowingPage.as_view(), name='foryoupage'),
     path('comment/<int:pk>/', CommentPage.as_view(), name='comment'),
+    path('comment/<int:pk>/like/', AddCommentLike.as_view(), name='comment-like'),
 ]

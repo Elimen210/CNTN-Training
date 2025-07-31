@@ -44,11 +44,12 @@
             <p>{{ post.body }}</p>
             <form method="POST" action="{% url 'like' post.pk %}">
                 {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
                 <button type="submit"><i class='bxr  bx-like'></i><span> {{ post.likes.all.count }}</span></button>
             </form>
         </div>
         <div>
-            <form method="POST" class="post-form" action="{{ request.path }}">
+            <form method="POST" class="post-form" value="{{ request.path }}">
                 {% csrf_token %}
                 {{ form | crispy }}
                 <br />
@@ -62,9 +63,10 @@
                 <p style="text-decoration: none;"><a href="{% url 'profile' post.author.pk %}" style="color:dodgerblue;"><strong>@{{ comment.author }}</strong></a> {{ comment.created_on }}</p>
             </div>
             <p>{{ comment.comment }}</p>
-            <form method="POST" action="{% url 'like' post.pk %}">
+            <form method="POST" action="{% url 'comment-like' comment.pk %}">
                 {% csrf_token %}
-                <button type="submit"><i class='bxr  bx-like'></i><span> {{ post.likes.all.count }}</span></button>
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <button type="submit"><i class='bxr  bx-like'></i><span> {{ comment.likes.all.count }}</span></button>
             </form>
         </div>
         {% endfor %}
