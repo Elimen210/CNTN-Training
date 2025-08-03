@@ -86,7 +86,7 @@
 {% else %}
 <link rel="stylesheet" href="{% static 'css/login.css' %}">
 <div class="container">
-    <p class="text">Vous êtes déjà connecté</p>
-    <a class="text" href="{% url 'landing' %}">Retournez sur la page d'accueil</a>
+    <p class="text">Vous n'êtes pas connecté</p>
+    <a class="text" href="{% url 'login-home' %}">Aller se connecter</a>
 </div>
 {% endif %}
